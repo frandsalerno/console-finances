@@ -88,10 +88,9 @@ var finances = [
 ];
 
 var total = 0;
-var diff = 0
+var diff = []
+var Monthly = [];
 var diffMonthly = [];
-var increase = 0;
-var decrease = 0;
 
 
 for (var main_index = 0; main_index < finances.length; main_index++ ) {
@@ -99,18 +98,58 @@ for (var main_index = 0; main_index < finances.length; main_index++ ) {
     // console.log(typeof(finances[main_index][nested_index]));
     if(typeof(finances[main_index][nested_index]) === 'number'){
       total += finances[main_index][nested_index];
-      // console.log(total);
-      diff = Math.abs(finances[main_index][nested_index]);
-      diffMonthly.push(diff);
+      Monthly.push(finances[main_index][nested_index]);
+      // var previousIndex = [main_index-1 || 0];
+      // console.log(finances[main_index][nested_index] - finances[main_index][nested_index-1] );
+      // diffMonthly.push(finances[main_index][nested_index-1]-finances[main_index][nested_index]);
     }
   }
 }
-console.log(diffMonthly);
-console.log(Math.max(...diffMonthly));
+
+// Monthly.reduce(
+//   function(previousValue, currentValue, currentIndex){
+//     diffMonthly[finances[currentIndex][0]]= currentValue - previousValue;
+//     // console.log(previousValue, currentValue);
+//     return currentValue;
+//   }
+// )
+// var increaseProfit = Monthly.reduce(
+//   function(previousValue, currentValue, currentIndex){
+//     if(previousValue>currentValue){
+//       return previousValue;
+//     } 
+//     return currentValue;
+//   }
+// )
+
+// console.log(increaseProfit);
+
+// console.log(Math.max(...Monthly));
+
+// console.log(Monthly);
+var totalMonthly = 0;
+
+for (i=0; i < Monthly.length; i++) {
+  var month1 = Monthly[i]
+  var month2 = 0;
+  if (i>Monthly.length){
+    var month2 = Monthly[i+1];
+  }
+  var result = month2 - month1;
+  var totalMonthly =+ result;
+  // console.log(totalMonthly);
+  diff.push(result);
+}
 
 
-// console.log('Financial Analysis');
-// console.log('-------------------------');
-// console.log('Total Months: ' + finances.length);
-// console.log('Total: $'+total); 
-// console.log('Average change: $'+(diff/finances.length).toFixed(2));
+console.log(diff);
+
+
+
+console.log('Financial Analysis');
+console.log('-------------------------');
+console.log('Total Months: ' + finances.length);
+console.log('Total: $'+total); 
+console.log('Average change: $'+(totalMonthly/finances.length).toFixed(2));
+console.log('Greatest Increase in Profits: $'+Math.max(...diff));
+console.log('Greatest Increase in Profits: $'+Math.min(...diff));
