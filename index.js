@@ -103,6 +103,7 @@ for (var main_index = 0; main_index < finances.length; main_index++ ) {
 }
 
 var totalMonthly = 0;
+var diffMonths = []
 
 for (i=0; i < Monthly.length; i++) {
   var month1 = Monthly[i]
@@ -113,15 +114,16 @@ for (i=0; i < Monthly.length; i++) {
   var result = month2 - month1;
   var totalMonthly =+ result;
   diff.push(result);
+  diffMonths.push(finances[i][0])
 }
 
-
-console.log(diff);
+var indexOfIncreaseProfit = diff.indexOf(Math.max(...diff));
+var indexOfIncreaseLosses = diff.indexOf(Math.min(...diff));
 
 console.log('Financial Analysis');
 console.log('-------------------------');
 console.log('Total Months: ' + finances.length);
 console.log('Total: $'+total); 
 console.log('Average change: $'+(totalMonthly/finances.length).toFixed(2));
-console.log('Greatest Increase in Profits: $'+Math.max(...diff));
-console.log('Greatest Increase in Profits: $'+Math.min(...diff));
+console.log('Greatest Increase in Profits '+diffMonths[indexOfIncreaseProfit]+' : $'+Math.max(...diff));
+console.log('Greatest Increase in Profits '+diffMonths[indexOfIncreaseLosses]+' : $'+Math.min(...diff));
