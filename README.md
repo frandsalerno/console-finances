@@ -13,7 +13,7 @@ On this one I needed to find certain values given a nested array of Months and P
 - [License](#license)
 
 ## Screenshots
-![alt text]([https://github.com/frandsalerno/Bootstrap-Portfolio/blob/main/assets/images/desktop.png](https://github.com/frandsalerno/console-finances/blob/main/assets/img/results.png) "Screenshot of the results")
+![alt text](https://github.com/frandsalerno/console-finances/blob/main/assets/img/results.png "Screenshot of the results")
 
 
 ## Installation
